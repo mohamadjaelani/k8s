@@ -206,5 +206,11 @@
   ```
   kubeadm token create --print-join-command
   ```
-  then execute join token in worker node
+  then execute join token in worker node.
+  install controller
+  ```
+  curl https://raw.githubusercontent.com/projectcalico/calico/v3.28.2/manifests/calico.yaml -O
+  kubectl apply -f calico.yaml
+  kubectl get pods -n kube-system | grep calico
+  ```
 ## that's it
