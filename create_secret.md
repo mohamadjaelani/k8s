@@ -59,4 +59,40 @@ store token into variable:
 token=$(kubectl get secret default-token-secret -o jsonpath={.data.token} | base64 --decode)
 echo $token
 ```
-
+set token to a user 'admin'
+```
+kubectl config set-credentials admin --token=$token
+```
+set context to new user 'admin'
+```
+kubectl config set-context new-context --cluster=kubernetes --user=admin
+```
+then view it:
+```
+$ kubectl config view
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://192.168.1.20:6443
+  name: kubernetes
+contexts:
+- context:
+    cluster: kubernetes
+    user: kubernetes-admin
+  name: kubernetes-admin@kubernetes
+- context:
+    cluster: kubernetes
+    user: admin
+  name: new-context
+current-context: kubernetes-admin@kubernetes
+kind: Config
+users:
+- name: admin
+  user:
+    token: REDACTED
+- name: kubernetes-admin
+  user:
+    client-certificate-data: DATA+OMITTED
+    client-key-data: DATA+OMITTED
+```
