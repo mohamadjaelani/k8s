@@ -42,3 +42,7 @@ or create a temporary token using below command
 kubectl create token <service-account-name> --duration=24h
 
 ```
+then attached the secret to service account:
+```
+kubectl patch serviceaccount admin2 -p '{"secrets": [{"name": "default-token-secret"}]}'
+```
