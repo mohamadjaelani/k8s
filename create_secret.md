@@ -69,7 +69,10 @@ kubectl config set-context new-context --cluster=kubernetes --user=admin
 ```
 then view it:
 ```
-$ kubectl config view
+kubectl config view
+```
+then we have
+```
 apiVersion: v1
 clusters:
 - cluster:
@@ -95,4 +98,16 @@ users:
   user:
     client-certificate-data: DATA+OMITTED
     client-key-data: DATA+OMITTED
+```
+switch to a new-context
+```
+kubectl config use-context new-context
+```
+then view it
+```
+kubectl config view | grep current-context
+```
+change current-context:
+```
+kubectl config use-context kubernetes-admin@kubernetes
 ```
