@@ -202,12 +202,12 @@
   ```
   kubeadm join 192.168.1.23:6443 --token g2jump.kww06e695f6mbb1c --discovery-token-ca-cert-hash sha256:567216c5e582c27cfc515ed27e0e1887ca45ccf6b6a74dac829369b1a1471f5e 
   ```
-  if you forget to copy it, then you can get join token by running below command
+  if you forget to copy it, then you can get join token by running below command in master cluster/controller
   ```
   kubeadm token create --print-join-command
   ```
-  then execute join token in worker node.
-  install controller
+  then execute join token in worker node.\
+  install in master/controller
   ```
   curl https://raw.githubusercontent.com/projectcalico/calico/v3.28.2/manifests/calico.yaml -O
   kubectl apply -f calico.yaml
