@@ -54,4 +54,9 @@ from up command will have base64 encoded, to decode using below command:
 ```
 kubectl get secret default-token-secret -o jsonpath={.data.token} | base64 --decode
 ```
+store token into variable:
+```
+token=$(kubectl get secret default-token-secret -o jsonpath={.data.token} | base64 --decode)
+echo $token
+```
 
