@@ -46,3 +46,12 @@ then attached the secret to service account:
 ```
 kubectl patch serviceaccount admin2 -p '{"secrets": [{"name": "default-token-secret"}]}'
 ```
+view the secret
+```
+kubectl get secret default-token-secret -o yaml
+```
+from up command will have base64 encoded, to decode using below command:
+```
+kubectl get secret default-token-secret -o jsonpath={.data.token} | base64 --decode
+```
+
