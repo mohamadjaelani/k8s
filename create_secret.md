@@ -111,3 +111,7 @@ change current-context:
 ```
 kubectl config use-context kubernetes-admin@kubernetes
 ```
+get list of certificates
+```
+kubectl get certificatesigningrequests.certificates.k8s.io
+```
